@@ -30,5 +30,6 @@ You can run it from the terminal on systems with Python 3:
 
 first, install customtkinter:
 - pip install customtkinter
+  
 after that, run this command on terminal:
 - python3 keytester.py
