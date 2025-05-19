@@ -21,51 +21,48 @@ class KeyTesterApp(ctk.CTk):
         self.border_color = "white"
 
         self.samples = {
-            "Kolay": [
-                "Merhaba dünya",
-                "Bu bir testtir",
-                "Python harikadır"
+            "Easy": [
+                "Hello world",
+                "THis is a test",
+                "Python is awesome"
             ],
-            "Orta": [
-                "Python programlama dili çok yönlüdür.",
-                "Bugün hava çok güzel ve güneşli.",
-                "Bilgisayarlar veri işler ve sonuç üretir."
+            "Medium": [
+                "Python codding language is easy but slow.",
+                "Today weather is sunny and too hot.",
+                "Quantum bites can be 0 and 1 at the same time."
             ],
-            "Zor": [
-                "Yapay zeka, insan benzeri görevleri gerçekleştiren sistemlerdir.",
-                "Veri analizi, büyük veri kümelerinden anlam çıkarmayı sağlar.",
-                "Python’da threading ve multiprocessing kavramları farklıdır."
+            "Hard": [
+                "AI needs big computers that has  at least 100 Gigabyte's of vram.",
+                "Linus Torvalds thinks nothing is better than C because of much reason.",
+                "In C++ you need iostream and cout bun in python you just need print."
             ]
         }
 
-        self.difficulty = "Orta"
+        self.difficulty = "Medium"
         self.sample_text = random.choice(self.samples[self.difficulty])
         self.start_time = None
-        self.target_wpm = 40  # Varsayılan hedef
+        self.target_wpm = 40  
 
-        # Üst çerçeve (seviye ve tema butonları)
         self.top_frame = ctk.CTkFrame(self, fg_color="transparent")
         self.top_frame.pack(side="top", fill="x", padx=10, pady=(5, 0))
 
-        self.level_menu = ctk.CTkOptionMenu(self.top_frame, values=["Kolay", "Orta", "Zor"], command=self.change_difficulty)
+        self.level_menu = ctk.CTkOptionMenu(self.top_frame, values=["Easy", "Medium", "Hard"], command=self.change_difficulty)
         self.level_menu.set(self.difficulty)
         self.level_menu.pack(side="left")
 
-        self.theme_button = ctk.CTkButton(self.top_frame, text="🌙 Tema", command=self.toggle_theme, width=70)
+        self.theme_button = ctk.CTkButton(self.top_frame, text="🌙 Theme", command=self.toggle_theme, width=70)
         self.theme_button.pack(side="right")
 
-        # Hedef WPM giriş kutusu ve etiket
         self.target_frame = ctk.CTkFrame(self, fg_color="transparent")
         self.target_frame.place(relx=0.01, rely=0.91)
 
-        self.target_label = ctk.CTkLabel(self.target_frame, text="🎯 Hedef WPM:", font=("Ubuntu", 12))
+        self.target_label = ctk.CTkLabel(self.target_frame, text="🎯 Goal WPM:", font=("Ubuntu", 12))
         self.target_label.pack(side="left")
 
         self.target_entry = ctk.CTkEntry(self.target_frame, width=50, font=("Ubuntu", 12))
         self.target_entry.insert(0, str(self.target_wpm))
-        self.target_entry.pack(side="left")
+        self.target_entry.pack(ide="left")
 
-        # Metin ve giriş
         self.label = ctk.CTkLabel(self, text=self.sample_text, wraplength=550, font=("Ubuntu", 16))
         self.label.pack(pady=(10, 10))
 
@@ -82,12 +79,11 @@ class KeyTesterApp(ctk.CTk):
         self.output_box = ctk.CTkTextbox(self, height=80, width=550, font=("Ubuntu", 14), state="disabled", border_color=self.border_color, border_width=1)
         self.output_box.pack(pady=(0, 5))
 
-        self.retry_button = ctk.CTkButton(self, text="Yeniden Dene", command=self.reset)
+        self.retry_button = ctk.CTkButton(self, text="Try again", command=self.reset)
         self.retry_button.pack()
         self.retry_button.configure(state="disabled")
 
-        # Önceki sonuçlar kutusu
-        self.history_label = ctk.CTkLabel(self, text="\U0001F4CA Önceki Sonuçlar", font=("Ubuntu", 13, "bold"))
+        self.history_label = ctk.CTkLabel(self, text="\U0001F4CA In the past:", font=("Ubuntu", 13, "bold"))
         self.history_label.pack(pady=(10, 0))
 
         self.history_box = ctk.CTkTextbox(self, height=100, width=550, font=("Ubuntu", 12), state="disabled", border_color=self.border_color, border_width=1)
@@ -120,7 +116,7 @@ class KeyTesterApp(ctk.CTk):
         accuracy = self.calculate_accuracy(typed_text)
 
         hedef_basari = wpm >= self.target_wpm
-        durum_yazi = "✅ Hedefe Ulaşıldı" if hedef_basari else "❌ Hedefe Ulaşılamadı"
+        durum_yazi = "✅ Goal reached" if hedef_basari else "❌ Goal is not reached"
         renk = "green" if hedef_basari else "red"
         self.goal_label.configure(text=durum_yazi, text_color=renk)
 
@@ -132,10 +128,9 @@ class KeyTesterApp(ctk.CTk):
         self.entry.configure(state="disabled")
         self.retry_button.configure(state="normal")
 
-        # Geçmişe ekle
         now = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
         self.history_box.configure(state="normal")
-        self.history_box.insert(ctk.END, f"[{now}] WPM: {wpm:.2f} | Doğruluk: {accuracy:.2f}% | {durum_yazi}\n")
+        self.history_box.insert(ctk.END, f"[{now}] WPM: {wpm:.2f} | Accuracy: {accuracy:.2f}% | {durum_yazi}\n")
         self.history_box.tag_add("last_entry", "end-2l", "end-1l")
         self.history_box.tag_config("last_entry", foreground=renk)
         self.history_box.configure(state="disabled")
@@ -180,7 +175,7 @@ class KeyTesterApp(ctk.CTk):
             self.appearance_mode = "dark"
             self.border_color = "white"
             ctk.set_appearance_mode("dark")
-            self.theme_button.configure(text="🌙 Tema")
+            self.theme_button.configure(text="🌙 Theme")
 
         self.entry.configure(border_color=self.border_color)
         self.output_box.configure(border_color=self.border_color)

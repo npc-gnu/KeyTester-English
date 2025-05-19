@@ -12,17 +12,12 @@ It offers a user-friendly experience with features such as dark theme, level sel
 - 🌙 Light/Dark theme support
 - 🔄 Retry button
 - 🧾 README opening and help section (optional)
-- ✅ Support for `.msi` installation for Windows
+- ✅ Support for `.msi` installation for Windows but only for Turkish version. English will come soon.
 - ❌ No support for ".deb/.rpm" for linux distros. you can run the program by "python3" command.
-- ❌ Currently there is only Turkish language support. English language support may be added in the future.
-
+- ✅ This fork is English. For Turkish version [click here](https://github.com/hasofxs/KeyTester) .
 
 
 ## ⚙️ Installation
-
-> **For Windows:**
-
-Download and run the `.msi` file. After the installation is complete, you can run it from the Start menu or from a shortcut.
 
 > **For Linux:**
 
