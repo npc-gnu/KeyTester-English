@@ -61,7 +61,7 @@ class KeyTesterApp(ctk.CTk):
 
         self.target_entry = ctk.CTkEntry(self.target_frame, width=50, font=("Ubuntu", 12))
         self.target_entry.insert(0, str(self.target_wpm))
-        self.target_entry.pack(ide="left")
+        self.target_entry.pack(side="left")
 
         self.label = ctk.CTkLabel(self, text=self.sample_text, wraplength=550, font=("Ubuntu", 16))
         self.label.pack(pady=(10, 10))
