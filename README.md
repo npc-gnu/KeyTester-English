@@ -22,9 +22,11 @@ It offers a user-friendly experience with features such as dark theme, level sel
 > **For Linux:**
 
 You can run it from the terminal on systems with Python 3:
+First, clone the repository
+- `git clone https://github.com/npc-gnu/KeyTester-English`
 
-first, install customtkinter:
-- pip install customtkinter
-  
-after that, run this command on terminal:
-- python3 keytester.py
+Second, install customtkinter:
+- `pip install customtkinter`
+
+Lastly, run this command on terminal:
+- `python3 keytester.py`
